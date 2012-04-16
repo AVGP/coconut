@@ -1,0 +1,49 @@
+<head>
+    <title>Coconut</title>
+    <!--[if lte IE 6]>
+    <link rel="stylesheet" type="text/css" src="ie.css" />
+    <![endif]-->
+    <link rel="stylesheet" type="text/css" media="print" src="print.css" />
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"></script>
+</head>
+
+<body>
+    {{> main}}
+</body>
+
+<template name="main">
+    {{#if showFile}}
+        {{> oneFile}}
+    {{/if}}
+    {{#unless showFile}}
+        <div class="main">
+            {{> list}}
+        </div>
+    {{/unless}}
+</template>
+
+<template name="list">
+    <div class="list">
+        <p>
+            <button id="addfile">Add file</button>
+        </p>
+        <ul>
+            {{#each files}}
+                {{> file}}
+            {{/each}}
+        </ul>
+    </div>
+</template>
+
+<template name="file">
+    <li class="file">
+        {{filename}}
+    </li>
+</template>
+
+<template name="oneFile">
+    <div class="oneFile">
+        <textarea name="content" id="content">{{content}}</textarea>
+        <button id="back">Back to file list</button>
+    </div>
+</template>
